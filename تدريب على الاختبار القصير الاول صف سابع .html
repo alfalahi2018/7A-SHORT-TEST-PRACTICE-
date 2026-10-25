@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade 7 - Unit 1: Entertainment Worksheet</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .header-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .header-info input {
+            border: none;
+            border-bottom: 2px solid #3498db;
+            outline: none;
+            font-size: 1em;
+            padding: 5px;
+            background: transparent;
+        }
+        .section {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px dashed #eee;
+        }
+        .section-title {
+            font-size: 1.3em;
+            color: #2980b9;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .question {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #fafafa;
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+        .question-text {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .options label {
+            display: block;
+            margin: 8px 0;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 5px;
+            transition: background 0.2s;
+        }
+        .options label:hover {
+            background-color: #e8f4fd;
+        }
+
+        /* Picture options (Listening) */
+        .options.pics {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .options.pics label {
+            flex: 1 1 150px;
+            max-width: 220px;
+            margin: 0;
+            padding: 12px 8px;
+            text-align: center;
+            background: #fff;
+            border: 2px solid #dfe6e9;
+            border-radius: 12px;
+        }
+        .options.pics label:hover {
+            border-color: #3498db;
+            background-color: #e8f4fd;
+        }
+        .options.pics label:has(input:checked) {
+            border-color: #2980b9;
+            background-color: #d6eaf8;
+            box-shadow: 0 0 0 3px rgba(41,128,185,0.25);
+        }
+        .pic {
+            display: block;
+            font-size: 3.2em;
+            line-height: 1.2;
+            letter-spacing: 4px;
+            margin-bottom: 8px;
+        }
+        .pic-letter {
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        select {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+            margin-top: 10px;
+            width: 100%;
+            max-width: 300px;
+        }
+        .btn-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+        button {
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.1em;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #1c598a;
+        }
+        .btn-reset {
+            background-color: #e74c3c;
+        }
+        .btn-reset:hover {
+            background-color: #c0392b;
+        }
+        .feedback-correct {
+            background-color: #d4edda !important;
+            border-color: #c3e6cb !important;
+        }
+        .feedback-incorrect {
+            background-color: #f8d7da !important;
+            border-color: #f5c6cb !important;
+        }
+        .explanation {
+            display: none;
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #555;
+            font-style: italic;
+        }
+        #score-display {
+            display: none;
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #27ae60;
+            margin-top: 20px;
+            padding: 20px;
+            background: #eafaf1;
+            border-radius: 8px;
+            border: 2px solid #27ae60;
+        }
+        .audio-bar {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin: 0 0 12px 0;
+        }
+        .audio-bar button {
+            margin: 0;
+            padding: 8px 16px;
+            font-size: 0.95em;
+            background-color: #27ae60;
+        }
+        .audio-bar button:hover { background-color: #1e8449; }
+        .audio-bar .btn-stop { background-color: #7f8c8d; }
+        .audio-bar .btn-stop:hover { background-color: #626d6e; }
+        .audio-note {
+            font-size: 0.9em;
+            color: #555;
+            background: #fff8e1;
+            border: 1px solid #ffe08a;
+            border-radius: 8px;
+            padding: 8px 12px;
+        }
+        .credit {
+            text-align: center;
+            margin-top: 35px;
+            padding-top: 15px;
+            border-top: 2px dashed #eee;
+            color: #7f8c8d;
+            font-size: 0.95em;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Short Test 1 – Unit 1: Entertainment</h1>
+    <div class="header-info">
+        <div>Name: <input type="text" placeholder="Your Name"></div>
+        <div>Class: 7/ <input type="text" placeholder="Section" style="width: 50px;"></div>
+    </div>
+
+    <!-- SECTION 1: LISTENING (picture options) -->
+    <div class="section" id="listening-section">
+        <div class="section-title">🎧 Section 1: Listening Comprehension ( /5 marks)</div>
+        <p><em>Press the 🔊 button, listen, and choose the correct picture.</em></p>
+        <div class="audio-note">🔈 Turn the sound on. Use Chrome, Edge or Safari for the best voice.</div>
+        <br>
+
+        <div class="question" id="q1">
+            <div class="question-text">1. What is Yousuf's job?</div>
+            <div class="audio-bar"><button onclick="playAudio('q1')">🔊 Listen (x2)</button><button class="btn-stop" onclick="stopAudio()">⏹ Stop</button></div>
+            <div class="options pics">
+                <label aria-label="a">
+                    <span class="pic" role="img" aria-label="cameraman">🎥🎬</span>
+                    <input type="radio" name="q1" value="a"> <span class="pic-letter">a</span>
+                </label>
+                <label aria-label="b">
+                    <span class="pic" role="img" aria-label="sound engineer">🎛️🎧</span>
+                    <input type="radio" name="q1" value="b"> <span class="pic-letter">b</span>
+                </label>
+                <label aria-label="c">
+                    <span class="pic" role="img" aria-label="artist">🎨🖌️</span>
+                    <input type="radio" name="q1" value="c"> <span class="pic-letter">c</span>
+                </label>
+            </div>
+            <div class="explanation">Yousuf works in a studio with buttons and screens to control sounds.</div>
+        </div>
+
+        <div class="question" id="q2">
+            <div class="question-text">2. Where did Maha go?</div>
+            <div class="audio-bar"><button onclick="playAudio('q2')">🔊 Listen (x2)</button><button class="btn-stop" onclick="stopAudio()">⏹ Stop</button></div>
+            <div class="options pics">
+                <label aria-label="a">
+                    <span class="pic" role="img" aria-label="aquarium">🦈🐠</span>
+                    <input type="radio" name="q2" value="a"> <span class="pic-letter">a</span>
+                </label>
+                <label aria-label="b">
+                    <span class="pic" role="img" aria-label="zoo">🦒🦓</span>
+                    <input type="radio" name="q2" value="b"> <span class="pic-letter">b</span>
+                </label>
+                <label aria-label="c">
+                    <span class="pic" role="img" aria-label="art gallery">🖼️🎨</span>
+                    <input type="radio" name="q2" value="c"> <span class="pic-letter">c</span>
+                </label>
+            </div>
+            <div class="explanation">Maha walked through a glass tunnel and saw sharks swimming above her.</div>
+        </div>
+
+        <div class="question" id="q3">
+            <div class="question-text">3. What is Noor's job?</div>
+            <div class="audio-bar"><button onclick="playAudio('q3')">🔊 Listen (x2)</button><button class="btn-stop" onclick="stopAudio()">⏹ Stop</button></div>
+            <div class="options pics">
+                <label aria-label="a">
+                    <span class="pic" role="img" aria-label="clown">🤡🎈</span>
+                    <input type="radio" name="q3" value="a"> <span class="pic-letter">a</span>
+                </label>
+                <label aria-label="b">
+                    <span class="pic" role="img" aria-label="singer">🎤🎶</span>
+                    <input type="radio" name="q3" value="b"> <span class="pic-letter">b</span>
+                </label>
+                <label aria-label="c">
+                    <span class="pic" role="img" aria-label="puppeteer">🧸🎭</span>
+                    <input type="radio" name="q3" value="c"> <span class="pic-letter">c</span>
+                </label>
+            </div>
+            <div class="explanation">Noor holds dolls on her hands and moves their arms and legs to make people laugh.</div>
+        </div>
+
+        <div class="question" id="q4">
+            <div class="question-text">4. Where is Rashid going tomorrow?</div>
+            <div class="audio-bar"><button onclick="playAudio('q4')">🔊 Listen (x2)</button><button class="btn-stop" onclick="stopAudio()">⏹ Stop</button></div>
+            <div class="options pics">
+                <label aria-label="a">
+                    <span class="pic" role="img" aria-label="circus">🎪🤹</span>
+                    <input type="radio" name="q4" value="a"> <span class="pic-letter">a</span>
+                </label>
+                <label aria-label="b">
+                    <span class="pic" role="img" aria-label="amusement park">🎡🎢</span>
+                    <input type="radio" name="q4" value="b"> <span class="pic-letter">b</span>
+                </label>
+                <label aria-label="c">
+                    <span class="pic" role="img" aria-label="planetarium">🪐🔭</span>
+                    <input type="radio" name="q4" value="c"> <span class="pic-letter">c</span>
+                </label>
+            </div>
+            <div class="explanation">Rashid is going somewhere with big rides, a Ferris wheel, and roller coasters.</div>
+        </div>
+
+        <div class="question" id="q5">
+            <div class="question-text">5. What is Salim's sister's job?</div>
+            <div class="audio-bar"><button onclick="playAudio('q5')">🔊 Listen (x2)</button><button class="btn-stop" onclick="stopAudio()">⏹ Stop</button></div>
+            <div class="options pics">
+                <label aria-label="a">
+                    <span class="pic" role="img" aria-label="teacher">👩‍🏫💻</span>
+                    <input type="radio" name="q5" value="a"> <span class="pic-letter">a</span>
+                </label>
+                <label aria-label="b">
+                    <span class="pic" role="img" aria-label="makeup artist">💄🖌️</span>
+                    <input type="radio" name="q5" value="b"> <span class="pic-letter">b</span>
+                </label>
+                <label aria-label="c">
+                    <span class="pic" role="img" aria-label="TV presenter">🎙️📺</span>
+                    <input type="radio" name="q5" value="c"> <span class="pic-letter">c</span>
+                </label>
+            </div>
+            <div class="explanation">Salim's sister talks to the camera, asks famous people questions, and holds note cards.</div>
+        </div>
+    </div>
+
+    <!-- SECTION 2: MATCHING -->
+    <div class="section" id="matching-section">
+        <div class="section-title">🔗 Section 2: Matching ( /5 marks)</div>
+        <p>Match the sentences (1-5) with the correct endings (A-F).</p>
+
+        <div class="question" id="q6">
+            <div class="question-text">1. On Friday we got up early and went to the stadium to watch a football match...</div>
+            <select name="q6">
+                <option value="">-- Select an ending --</option>
+                <option value="A">A. so some students almost fell asleep.</option>
+                <option value="B">B. so he decided to sell his old bicycle instead.</option>
+                <option value="C">C. so we went to a small restaurant near the stadium for dinner.</option>
+                <option value="D">D. so she held my hand the whole time.</option>
+                <option value="E">E. so she bought a postcard of her favourite painting.</option>
+                <option value="F">F. so he wants to be a clown when he grows up.</option>
+            </select>
+            <div class="explanation">After the match, they were very hungry, so they went to a restaurant.</div>
+        </div>
+
+        <div class="question" id="q7">
+            <div class="question-text">2. My cousin loves art, so last week we visited a new art gallery in town. My cousin wanted to buy a souvenir...</div>
+            <select name="q7">
+                <option value="">-- Select an ending --</option>
+                <option value="A">A. so some students almost fell asleep.</option>
+                <option value="B">B. so he decided to sell his old bicycle instead.</option>
+                <option value="C">C. so we went to a small restaurant near the stadium for dinner.</option>
+                <option value="D">D. so she held my hand the whole time.</option>
+                <option value="E">E. so she bought a postcard of her favourite painting.</option>
+                <option value="F">F. so he wants to be a clown when he grows up.</option>
+            </select>
+            <div class="explanation">A postcard of a painting is a perfect souvenir from an art gallery.</div>
+        </div>
+
+        <div class="question" id="q8">
+            <div class="question-text">3. Yesterday evening, we went to the circus for the first time. There were clowns, jugglers. My little brother loved the clowns best...</div>
+            <select name="q8">
+                <option value="">-- Select an ending --</option>
+                <option value="A">A. so some students almost fell asleep.</option>
+                <option value="B">B. so he decided to sell his old bicycle instead.</option>
+                <option value="C">C. so we went to a small restaurant near the stadium for dinner.</option>
+                <option value="D">D. so she held my hand the whole time.</option>
+                <option value="E">E. so she bought a postcard of her favourite painting.</option>
+                <option value="F">F. so he wants to be a clown when he grows up.</option>
+            </select>
+            <div class="explanation">Since he loved the clowns best, he wants to be one when he grows up.</div>
+        </div>
+
+        <div class="question" id="q9">
+            <div class="question-text">4. At the weekend, we visited the planetarium with our class. We watched a film about the stars and planets. It was dark and quiet inside...</div>
+            <select name="q9">
+                <option value="">-- Select an ending --</option>
+                <option value="A">A. so some students almost fell asleep.</option>
+                <option value="B">B. so he decided to sell his old bicycle instead.</option>
+                <option value="C">C. so we went to a small restaurant near the stadium for dinner.</option>
+                <option value="D">D. so she held my hand the whole time.</option>
+                <option value="E">E. so she bought a postcard of her favourite painting.</option>
+                <option value="F">F. so he wants to be a clown when he grows up.</option>
+            </select>
+            <div class="explanation">The environment was dark and quiet, making some students almost fall asleep.</div>
+        </div>
+
+        <div class="question" id="q10">
+            <div class="question-text">5. Last month, my family went to a new aquarium. We walked through a glass tunnel and saw sharks swimming above us. My sister was a little scared...</div>
+            <select name="q10">
+                <option value="">-- Select an ending --</option>
+                <option value="A">A. so some students almost fell asleep.</option>
+                <option value="B">B. so he decided to sell his old bicycle instead.</option>
+                <option value="C">C. so we went to a small restaurant near the stadium for dinner.</option>
+                <option value="D">D. so she held my hand the whole time.</option>
+                <option value="E">E. so she bought a postcard of her favourite painting.</option>
+                <option value="F">F. so he wants to be a clown when he grows up.</option>
+            </select>
+            <div class="explanation">Because she was scared of the sharks, she held her sibling's hand the whole time.</div>
+        </div>
+    </div>
+
+    <div class="btn-container">
+        <button onclick="checkAnswers()">✅ Check Answers</button>
+        <button class="btn-reset" onclick="resetForm()">🔄 Try Again</button>
+    </div>
+
+    <div id="score-display"></div>
+
+    <div class="credit">Created by T.Badria Alfalahi</div>
+</div>
+
+<script>
+    // ---- Listening audio (text-to-speech) ----
+    // Official Listening Script (each text is read twice)
+    const listeningScripts = {
+        q1: "Hi, I'm Yousuf. I work in a studio with many buttons and screens. I sit at a big desk and control all the sounds for a TV show. I make sure the music and voices sound clear. I have done this job for five years.",
+        q2: "Hello, I'm Maha. Last weekend my family went somewhere with lots of water. We walked through a long glass tunnel and saw sharks and colourful fish swimming above our heads. It was dark and exciting inside. We stayed for two hours and took lots of photos.",
+        q3: "Hi, I'm Noor. I love making people laugh with small dolls. I hold the dolls on my hands and move their arms and legs so they look alive. Children watch me and smile. I have been doing this job since I was eight years old.",
+        q4: "Hello, I'm Rashid. Tomorrow we're going somewhere with big rides and a Ferris wheel. There will be fast roller coasters and loud music. My little sister wants to go on the swings. We are going to spend the whole day there and eat ice cream too.",
+        q5: "Hi, I'm Salim. My sister talks to the camera on a TV show. She sits in a colourful studio and asks famous people questions. She holds cards with notes in her hand. Many people watch her show every evening on TV."
+    };
+
+    let audioRun = 0;
+
+    function playAudio(q) {
+        if (!('speechSynthesis' in window)) {
+            alert('Your browser does not support audio. Please use Chrome, Edge or Safari.');
+            return;
+        }
+        window.speechSynthesis.cancel();
+        const run = ++audioRun;
+        const voices = window.speechSynthesis.getVoices();
+        const voice = voices.find(v => v.lang === 'en-GB') || voices.find(v => v.lang && v.lang.startsWith('en'));
+
+        function speakOnce(timesLeft) {
+            if (run !== audioRun || timesLeft === 0) return;
+            const u = new SpeechSynthesisUtterance(listeningScripts[q]);
+            if (voice) u.voice = voice;
+            u.lang = voice ? voice.lang : 'en-GB';
+            u.rate = 0.85;
+            u.onend = () => {
+                if (run === audioRun && timesLeft > 1) {
+                    setTimeout(() => speakOnce(timesLeft - 1), 3000); // 3-second pause between readings
+                }
+            };
+            window.speechSynthesis.speak(u);
+        }
+        speakOnce(2); // read twice
+    }
+
+    function stopAudio() {
+        audioRun++;
+        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+    }
+    if ('speechSynthesis' in window) window.speechSynthesis.getVoices();
+
+    // Answer Key
+    const answers = {
+        q1: 'b', q2: 'a', q3: 'c', q4: 'b', q5: 'c', // Listening
+        q6: 'C', q7: 'E', q8: 'F', q9: 'A', q10: 'D' // Matching
+    };
+
+    function checkAnswers() {
+        let score = 0;
+        const totalQuestions = 10;
+
+        for (let i = 1; i <= totalQuestions; i++) {
+            const qName = 'q' + i;
+            const questionDiv = document.getElementById(qName);
+            const explanation = questionDiv.querySelector('.explanation');
+            let userAnswer = null;
+
+            if (i <= 5) {
+                const selected = document.querySelector(`input[name="${qName}"]:checked`);
+                if (selected) userAnswer = selected.value;
+            } else {
+                const selectElement = document.querySelector(`select[name="${qName}"]`);
+                if (selectElement) userAnswer = selectElement.value;
+            }
+
+            if (userAnswer === answers[qName]) {
+                questionDiv.classList.add('feedback-correct');
+                questionDiv.classList.remove('feedback-incorrect');
+                score++;
+            } else {
+                questionDiv.classList.add('feedback-incorrect');
+                questionDiv.classList.remove('feedback-correct');
+            }
+
+            if (explanation) {
+                explanation.style.display = 'block';
+            }
+        }
+
+        const scoreDisplay = document.getElementById('score-display');
+        scoreDisplay.style.display = 'block';
+        scoreDisplay.innerHTML = `Your Score: ${score} / ${totalQuestions}`;
+
+        if (score === totalQuestions) {
+            scoreDisplay.innerHTML += "<br>🌟 Excellent work! Perfect score!";
+            scoreDisplay.style.color = "#27ae60";
+            scoreDisplay.style.borderColor = "#27ae60";
+            scoreDisplay.style.backgroundColor = "#eafaf1";
+        } else if (score >= 7) {
+            scoreDisplay.innerHTML += "<br>👍 Good job! Review the red boxes.";
+            scoreDisplay.style.color = "#d35400";
+            scoreDisplay.style.borderColor = "#d35400";
+            scoreDisplay.style.backgroundColor = "#fdf2e9";
+        } else {
+            scoreDisplay.innerHTML += "<br>📚 Keep practicing! Review the explanations.";
+            scoreDisplay.style.color = "#c0392b";
+            scoreDisplay.style.borderColor = "#c0392b";
+            scoreDisplay.style.backgroundColor = "#fdedec";
+        }
+    }
+
+    function resetForm() {
+        stopAudio();
+        document.querySelectorAll('input[type="radio"]').forEach(radio => radio.checked = false);
+        document.querySelectorAll('select').forEach(select => select.value = '');
+
+        document.querySelectorAll('.question').forEach(q => {
+            q.classList.remove('feedback-correct', 'feedback-incorrect');
+        });
+        document.querySelectorAll('.explanation').forEach(exp => exp.style.display = 'none');
+
+        document.getElementById('score-display').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>
